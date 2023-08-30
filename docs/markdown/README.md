@@ -30,9 +30,9 @@ For a list of commands run `mssh-menu.py` with the `-h` or `--help` options.
 
 ## Screenshots
 
-![Running the script and using the menu](../../docs/figures/mssh-menu.py.1.png)
+![Running the script and using the menu](https://raw.githubusercontent.com/toddwint/mssh-menu/main/docs/figures/mssh-menu.py.1.png)
 
-![Logged into multiple devices and typing the same commands once](../../docs/figures/mssh-menu.py.2.png)
+![Logged into multiple devices and typing the same commands once](https://raw.githubusercontent.com/toddwint/mssh-menu/main/docs/figures/mssh-menu.py.2.png)
 
 ## Requirements
 
