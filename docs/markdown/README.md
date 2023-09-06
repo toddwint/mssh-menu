@@ -69,9 +69,11 @@ Or in human readable form:
 
 ## TMUX defaults
 
-It is important to mention that this assumes you have set tmux to start windows and panes at **1** instead of the default **0**. 
-
 Here is my default `.tmux.conf` file for reference.
+
+This script will automatically take care of setting the `base-index` and `pane-base-index` to 1.
+
+It will not configure the `default-terminal`, `history-limit`, or `mouse` options.
 
 ```
 # Improve colors
@@ -87,4 +89,3 @@ set -g mouse on
 set -g base-index 1
 set -g pane-base-index 1
 ```
-

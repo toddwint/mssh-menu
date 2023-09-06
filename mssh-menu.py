@@ -244,6 +244,8 @@ def mssh_using_tmux(sshlist, user):
     rval = sh_run(f'tmux set-option -wg status-left-length 24')
     rval = sh_run(f'tmux set-option -g pane-border-status top')
     rval = sh_run(f'tmux set-option -g pane-border-format " [ ###P #T ] "')
+    rval = sh_run(f'tmux set-option -g base-index 1')
+    rval = sh_run(f'tmux set-option -g pane-base-index 1')
     for item in sshlist:
         rval = sh_run(f"tmux split-window 'ssh {user}@{item}'")
         rval = sh_run(f'tmux select-pane -T "{item}"')
