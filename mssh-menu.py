@@ -291,7 +291,7 @@ def main():
         parser.print_help()
         print(f"\n[ERROR]: `{csv_filename.name}` was not found. Bye.")
         sys.exit()
-    jsoncache.parent.mkdir(exist_ok=True)
+    jsoncache.parent.mkdir(parents=True, exist_ok=True)
     csvlist = open_csv(csv_filename)
     tagslist, tagsdict = get_tags_from_csv(csvlist)
     parser.print_usage()
