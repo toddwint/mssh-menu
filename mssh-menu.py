@@ -38,7 +38,7 @@ def parse_arguments():
         '-v', '--version',
         help = 'show the version number and exit',
         action = 'version',
-        version= f'Version: %(prog)s  {__version__}  ({__date__})',
+        version = f'Version: %(prog)s  {__version__}  ({__date__})',
         )
     parser.add_argument(
         'filename',
@@ -63,7 +63,7 @@ def parse_arguments():
         )
     parser.add_argument(
         '-d', '--display-only',
-        action='store_true',
+        action = 'store_true',
         help = (
             'Display the ssh list passed to ssh via tmux, '
             'but do not run it.'
@@ -71,7 +71,7 @@ def parse_arguments():
         )
     parser.add_argument(
         '-m', '--menu-only',
-        action='store_true',
+        action = 'store_true',
         help = 'Display the menu selection list and exit.',
         )
     return parser
@@ -198,7 +198,7 @@ def parse_selection(selection, n):
     """Takes a selection string and the max number of selections.
     Validates the input. Returns false if not valid. Else returns list.
     """
-    selectlist = selection.split(',')
+    selectlist = selection.replace(' ', '').split(',')
     tmplist = []
     for item in selectlist:
         if item.count('-') == 1:
