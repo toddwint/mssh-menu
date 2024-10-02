@@ -10,8 +10,8 @@ all inside one `tmux` window with the keyboard synchronized.
 """
 
 __author__ = 'Todd Wintermute'
-__date__ = '2023-08-27'
-__version__ = '0.0.4'
+__date__ = '2023-10-01'
+__version__ = '0.0.5'
 
 import argparse
 import csv
@@ -19,6 +19,7 @@ import datetime as dt
 import json
 import os
 import pathlib
+import re
 import shutil
 import subprocess
 import sys
@@ -68,6 +69,11 @@ def parse_arguments():
             'but do not run it.'
             ),
         )
+    parser.add_argument(
+        '-m', '--menu-only',
+        action='store_true',
+        help = 'Display the menu selection list and exit.',
+        )
     return parser
 
 def read_jsonfile(f=jsoncache):
@@ -100,6 +106,15 @@ def sortbycsv(host, csvlist):
     sort = [item for item, *_ in csvlist].index(host)
     return sort
 
+def natural_sort(somelist):
+    """Takes a list of strings and sorts them in a natural human format
+    also known as version sorting i.e. Number10 after Number1 and Number 2
+    """
+    l = somelist
+    convert = lambda text: int(text) if text.isdigit() else text.lower()
+    alphanum_key = lambda key: [convert(c) for c in re.split(r'([0-9]+)',key)]
+    return sorted(l, key=alphanum_key)
+
 def open_csv(csv_filename):
     "Reads the CSV file and returns a list"
     # Open the csv file, remove empty lines and remove the header
@@ -116,7 +131,7 @@ def open_csv(csv_filename):
 def get_tags_from_csv(csvlist):
     "Returns a list of tags (tagslist) and a dictionary of tags (tagsdict)"
     # list of unique tags, (remove host and flatten the list, convert to set)
-    tagslist = sorted(set([
+    tagslist = natural_sort(set([
         tag for tags in [rtags for host,*rtags in csvlist] for tag in tags
             ]))
     # initialize dictionary; keys are tag names; values are empty sets
@@ -149,6 +164,8 @@ def display_menu(tagslist):
     n = len(l)
     for c1,c2 in m:
         print(f"{c1: <{c1size}}{c2}")
+    if args.menu_only:
+        sys.exit()
     default = ''
     j = read_jsonfile()
     if (d := j[csvfile]['last_selection']):
