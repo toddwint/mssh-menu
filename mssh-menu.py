@@ -10,7 +10,7 @@ all inside one `tmux` window with the keyboard synchronized.
 """
 
 __author__ = 'Todd Wintermute'
-__date__ = '2023-10-01'
+__date__ = '2023-10-02'
 __version__ = '0.0.5'
 
 import argparse
