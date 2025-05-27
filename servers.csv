@@ -1,5 +1,0 @@
-host,tags,,,,
-server1,Site 1 servers,,Odd numbered servers,,All servers
-server2,Site 1 servers,,,Even numbered servers,All servers
-server3,,Site 2 servers,Odd numbered servers,,All servers
-server4,,Site 2 servers,,Even numbered servers,All servers

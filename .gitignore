@@ -1,4 +1,6 @@
+*.bak
+__pycache__/
 bkup
 bkup/*
-lists
-lists/*
+private
+private/*

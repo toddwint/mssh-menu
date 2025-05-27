@@ -1,0 +1,74 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mssh-menu"
+description = "Use CSV file with tags to ssh into multiple devices"
+dynamic = ["version"]
+authors = [
+    {name="Todd Wintermute"}
+    ]
+readme = "README.md"
+requires-python = ">=3.9"
+keywords = [
+    "ssh",
+    "mssh",
+    "tmux",
+    "sshmulti",
+    ]
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE"]
+dependencies = []
+classifiers = [
+    "Environment :: Console",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python",
+]
+[project.urls]
+Homepage = "None"
+
+[project.scripts]
+mssh-menu = "mssh_menu:main"
+
+[project.entry-points."pipx.run"]
+mssh-menu = "mssh_menu:main"
+
+[tool.hatch.version]
+path = "src/mssh_menu/mssh_menu.py"
+
+[tool.hatch.build.targets.sdist]
+only-include = [
+    "src",
+    "man",
+    "INSTALL.md",
+    "MANUAL.md",
+    "README.md",
+    ]
+artifacts = [
+    "man/mssh-menu.1",
+    "man/mssh-menu.1.gz",
+    "INSTALL.md",
+    "MANUAL.md",
+    "README.md",
+]
+
+[tool.hatch.build.targets.wheel]
+sources = ["src"]
+#packages = ["src/mssh_menu"]
+
+[tool.hatch.build.targets.wheel.shared-data]
+"man/mssh-menu.1" = "share/man/man1/mssh-menu.1"
+#"man/mssh-menu.1.gz" = "share/man/man1/mssh-menu.1.gz"
+#"INSTALL.md" = "share/doc/mssh_menu/INSTALL.md"
+#"MANUAL.md" = "share/doc/mssh_menu/MANUAL.md"
+#"README.md" = "share/doc/mssh_menu/README.md"
+"src/mssh_menu/shell-completions/bash/mssh-menu" = "share/bash-completion/completions/mssh-menu"
+"src/mssh_menu/shell-completions/zsh/mssh-menu" = "share/zsh/site-functions/_mssh-menu"
+"src/mssh_menu/shell-completions/fish/mssh-menu" = "share/fish/vendor_completions.d/mssh-menu.fish"

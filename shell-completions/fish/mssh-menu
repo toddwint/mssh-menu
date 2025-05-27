@@ -1,0 +1,12 @@
+# Fish shell completion for mssh-menu
+
+
+complete --command mssh-menu --command mssh_menu.py --command mssh-menu.pyz --no-files
+complete --command mssh-menu --command mssh_menu.py --command mssh-menu.pyz --short-option h --long-option help --description 'show this help message and exit' --no-files
+complete --command mssh-menu --command mssh_menu.py --command mssh-menu.pyz --long-option completion --description 'Print mssh-menu shell completion to the terminal and exit' --arguments 'bash zsh fish' --require-parameter --no-files
+complete --command mssh-menu --command mssh_menu.py --command mssh-menu.pyz --short-option v --long-option version --description 'show the version number and exit' --no-files
+complete --command mssh-menu --command mssh_menu.py --command mssh-menu.pyz --short-option n --long-option number --description '**Risky option** Enter selection number or numbers (separated by commas and/or using a dash to specify a range) instead of showing the menu.' --require-parameter --no-files
+complete --command mssh-menu --command mssh_menu.py --command mssh-menu.pyz --short-option u --long-option user --description 'Enter a username instead of being prompted for one.' --require-parameter --no-files
+complete --command mssh-menu --command mssh_menu.py --command mssh-menu.pyz --short-option c --long-option columns --description 'Override the autocalculation of menu columns. Specify an maximum number of menu columns to display.' --require-parameter --no-files
+complete --command mssh-menu --command mssh_menu.py --command mssh-menu.pyz --short-option m --long-option menu-only --description 'Display the menu selection list and exit.' --no-files
+complete --command mssh-menu --command mssh_menu.py --command mssh-menu.pyz --description 'name of CSV file (default=$HOME/servers.csv)' --force-files

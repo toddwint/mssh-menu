@@ -1,0 +1,5 @@
+host,tags,,
+server1,Site 1,Primary,All
+server2,Site 1,Redundant,All
+server3,Site 2,Primary,All
+server4,Site 2,Redundant,All

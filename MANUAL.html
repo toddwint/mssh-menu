@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Todd Wintermute" />
+  <meta name="dcterms.date" content="yyyy-mm-dd" />
+  <title>MSSH-MENU</title>
+  <style>
+html {
+font-family: Helvetica,Verdana,Sans-serif;
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: blue;
+}
+a:visited {
+color: blue;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+background-color: whitesmoke;
+padding: .2em .4em;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+background-color: whitesmoke;
+padding: 1em;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: #1a1a1a;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+caption-side: bottom;
+margin-top: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">MSSH-MENU</h1>
+<p class="author">Todd Wintermute</p>
+<p class="date">2025-05-23</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#name" id="toc-name"><span class="toc-section-number">1</span> Name</a></li>
+<li><a href="#synopsis" id="toc-synopsis"><span class="toc-section-number">2</span> Synopsis</a></li>
+<li><a href="#description" id="toc-description"><span class="toc-section-number">3</span> Description</a>
+<ul>
+<li><a href="#positional-arguments" id="toc-positional-arguments"><span class="toc-section-number">3.1</span> Positional Arguments</a></li>
+<li><a href="#option-flags" id="toc-option-flags"><span class="toc-section-number">3.2</span> Option Flags</a></li>
+<li><a href="#shell-completion-options" id="toc-shell-completion-options"><span class="toc-section-number">3.3</span> Shell Completion Options</a></li>
+</ul></li>
+<li><a href="#examples" id="toc-examples"><span class="toc-section-number">4</span> Examples</a>
+<ul>
+<li><a href="#sample-servers.csv-file" id="toc-sample-servers.csv-file"><span class="toc-section-number">4.1</span> Sample <code>servers.csv</code>
+file</a></li>
+<li><a href="#example-1" id="toc-example-1"><span class="toc-section-number">4.2</span> Example 1</a></li>
+<li><a href="#example-2" id="toc-example-2"><span class="toc-section-number">4.3</span> Example 2</a></li>
+<li><a href="#example-3" id="toc-example-3"><span class="toc-section-number">4.4</span> Example 3</a></li>
+<li><a href="#example-4" id="toc-example-4"><span class="toc-section-number">4.5</span> Example 4</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 data-number="1" id="name"><span class="header-section-number">1</span> Name</h1>
+<p>mssh-menu - Use CSV file with tags to ssh into multiple devices</p>
+<h1 data-number="2" id="synopsis"><span class="header-section-number">2</span> Synopsis</h1>
+<p><strong><code>mssh-menu</code></strong>
+[<strong><code>-h</code></strong>]
+[<strong><code>--completion</code></strong>
+{<strong><code>bash,zsh,fish</code></strong>}]
+[<strong><code>-v</code></strong>] [<strong><code>-n</code></strong>
+<em><code>number</code></em>] [<strong><code>-u</code></strong>
+<em><code>user</code></em>] [<strong><code>-c</code></strong>
+<em><code>columns</code></em>] [<strong><code>-m</code></strong>]
+[<em><code>FILENAME.CSV</code></em>]</p>
+<h1 data-number="3" id="description"><span class="header-section-number">3</span> Description</h1>
+<p>Input a CSV file that has a list of host and tags (multiple columns
+of tags are OK). This script will display to the user a list of groups
+by tag name and prompt for a selection of one or more items. The
+selection will launch multiple ssh connections all inside one
+<code>tmux</code> window with the keyboard synchronized.
+<code>ssh</code> and <code>tmux</code> are required to be available on
+the system path.</p>
+<h2 data-number="3.1" id="positional-arguments"><span class="header-section-number">3.1</span> Positional Arguments</h2>
+<dl>
+<dt><strong><em><code>FILENAME.CSV</code></em></strong></dt>
+<dd>
+name of CSV file (default=$HOME/servers.csv)
+</dd>
+</dl>
+<h2 data-number="3.2" id="option-flags"><span class="header-section-number">3.2</span> Option Flags</h2>
+<dl>
+<dt><strong><code>-h</code></strong>,
+<strong><code>--help</code></strong></dt>
+<dd>
+show this help message and exit
+</dd>
+<dt><strong><code>-v</code></strong>,
+<strong><code>--version</code></strong></dt>
+<dd>
+show the version number and exit
+</dd>
+<dt><strong><code>-n</code></strong> <em><code>number</code></em>,
+<strong><code>--number</code></strong> <em><code>number</code></em></dt>
+<dd>
+<strong>Risky option</strong> Enter selection number or numbers
+(separated by commas and/or using a dash to specify a range) instead of
+showing the menu.
+</dd>
+<dt><strong><code>-u</code></strong> <em><code>user</code></em>,
+<strong><code>--user</code></strong> <em><code>user</code></em></dt>
+<dd>
+Enter a username instead of being prompted for one.
+</dd>
+<dt><strong><code>-c</code></strong> <em><code>columns</code></em>,
+<strong><code>--columns</code></strong>
+<em><code>columns</code></em></dt>
+<dd>
+Override the autocalculation of menu columns. Specify an maximum number
+of menu columns to display.
+</dd>
+<dt><strong><code>-m</code></strong>,
+<strong><code>--menu-only</code></strong></dt>
+<dd>
+Display the menu selection list and exit.
+</dd>
+</dl>
+<h2 data-number="3.3" id="shell-completion-options"><span class="header-section-number">3.3</span> Shell Completion Options</h2>
+<dl>
+<dt><strong><code>--completion</code></strong>
+{<strong><code>bash,zsh,fish</code></strong>}</dt>
+<dd>
+Print mssh-menu shell completion to the terminal and exit
+</dd>
+</dl>
+<h1 data-number="4" id="examples"><span class="header-section-number">4</span> Examples</h1>
+<h2 data-number="4.1" id="sample-servers.csv-file"><span class="header-section-number">4.1</span> Sample <code>servers.csv</code>
+file</h2>
+<p>The examples use the following tags list:</p>
+<table>
+<thead>
+<tr>
+<th>host</th>
+<th>tags</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>server1</td>
+<td>Site 1</td>
+<td>Primary</td>
+<td>All</td>
+</tr>
+<tr>
+<td>server2</td>
+<td>Site 1</td>
+<td>Redundant</td>
+<td>All</td>
+</tr>
+<tr>
+<td>server3</td>
+<td>Site 2</td>
+<td>Primary</td>
+<td>All</td>
+</tr>
+<tr>
+<td>server4</td>
+<td>Site 2</td>
+<td>Redundant</td>
+<td>All</td>
+</tr>
+</tbody>
+</table>
+<p>Here is the data in CSV format. Save this file as
+<code>servers.csv</code>. You can edit it in a spreadsheet program like
+Microsoft Excel or LibreOffice Calc. You can also edit it using a simple
+text editing program like Notepad.</p>
+<pre><code>host,tags,,
+server1,Site 1,Primary,All
+server2,Site 1,Redundant,All
+server3,Site 2,Primary,All
+server4,Site 2,Redundant,All</code></pre>
+<p>Note: The SSH connections will be in the order of the items in the
+CSV file.</p>
+<h2 data-number="4.2" id="example-1"><span class="header-section-number">4.2</span> Example 1</h2>
+<p>Log into all the odd numbered servers.</p>
+<pre><code>$ mssh-menu examples/servers.csv</code></pre>
+<p>A menu appears. Select the option corresponding to <strong>“2.
+Primary”</strong>.</p>
+<p>Enter a username. The same username will be used on all servers.</p>
+<p>The output should look like this:</p>
+<pre><code>1. All      
+2. Primary  
+3. Redundant
+4. Site 1   
+5. Site 2   
+Info: Use commas to separate multiple entries and dash for ranges.
+Select one or more numbers from the list [1-5,q] (default=none): 2
+Selected: `2. Primary`
+server1
+server3 
+
+Enter username (default=none): admin</code></pre>
+<p>A window opens with two panes and an ssh connection is established to
+both servers (admin@server1 and admin@server3).</p>
+<h2 data-number="4.3" id="example-2"><span class="header-section-number">4.3</span> Example 2</h2>
+<p>Log into all the servers at Site 2.</p>
+<pre><code>$ mssh-menu examples/servers.csv</code></pre>
+<p>A menu appears. Select the option corresponding to <strong>“5. Site
+2”</strong>.</p>
+<p>Enter a username. The same username will be used on all servers.</p>
+<pre><code>1. All      
+2. Primary  
+3. Redundant
+4. Site 1   
+5. Site 2   
+Info: Use commas to separate multiple entries and dash for ranges.
+Select one or more numbers from the list [1-5,q] (default=none): 5
+Selected: `5. Site 2`
+server3
+server4 
+
+Enter username (default=none): admin</code></pre>
+<p>A window opens with two panes and an ssh connection is established to
+both servers (admin@server3 and admin@server4).</p>
+<h2 data-number="4.4" id="example-3"><span class="header-section-number">4.4</span> Example 3</h2>
+<p>Use the <code>--menu-only</code> option and <code>grep</code> to see
+which menu options correspond to the <strong>redundant</strong>
+servers.</p>
+<pre><code>$ mssh-menu examples/servers.csv --menu-only --columns 1 | grep -i redundant</code></pre>
+<p>The output should be:</p>
+<pre><code>3. Redundant</code></pre>
+<h2 data-number="4.5" id="example-4"><span class="header-section-number">4.5</span> Example 4</h2>
+<p>Use the menu number as an option to <code>mssh-menu</code> to ssh
+without using the menu.</p>
+<p>Using the output from example 3, enter the following command.</p>
+<pre><code>$ mssh-menu examples/servers.csv --user admin --number 3</code></pre>
+<p>The menu is not displayed, and a window opens with two panes and an
+ssh connection is established to both servers (admin@server2 and
+admin@server4).</p>
+</body>
+</html>

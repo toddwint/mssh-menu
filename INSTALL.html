@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Todd Wintermute" />
+  <meta name="dcterms.date" content="yyyy-mm-dd" />
+  <title>INSTALL</title>
+  <style>
+html {
+font-family: Helvetica,Verdana,Sans-serif;
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: blue;
+}
+a:visited {
+color: blue;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+background-color: whitesmoke;
+padding: .2em .4em;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+background-color: whitesmoke;
+padding: 1em;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: #1a1a1a;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+caption-side: bottom;
+margin-top: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } 
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } 
+code span.at { color: #204a87; } 
+code span.bn { color: #0000cf; } 
+code span.cf { color: #204a87; font-weight: bold; } 
+code span.ch { color: #4e9a06; } 
+code span.cn { color: #8f5902; } 
+code span.co { color: #8f5902; font-style: italic; } 
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } 
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } 
+code span.dt { color: #204a87; } 
+code span.dv { color: #0000cf; } 
+code span.er { color: #a40000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #0000cf; } 
+code span.fu { color: #204a87; font-weight: bold; } 
+code span.im { } 
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } 
+code span.kw { color: #204a87; font-weight: bold; } 
+code span.op { color: #ce5c00; font-weight: bold; } 
+code span.ot { color: #8f5902; } 
+code span.pp { color: #8f5902; font-style: italic; } 
+code span.sc { color: #ce5c00; font-weight: bold; } 
+code span.ss { color: #4e9a06; } 
+code span.st { color: #4e9a06; } 
+code span.va { color: #000000; } 
+code span.vs { color: #4e9a06; } 
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } 
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">INSTALL</h1>
+<p class="author">Todd Wintermute</p>
+<p class="date">2025-05-23</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#prerequisites" id="toc-prerequisites"><span class="toc-section-number">1</span> Prerequisites</a></li>
+<li><a href="#install" id="toc-install"><span class="toc-section-number">2</span> Install</a>
+<ul>
+<li><a href="#linux" id="toc-linux"><span class="toc-section-number">2.1</span> Linux</a>
+<ul>
+<li><a href="#externally-managed-base-environments" id="toc-externally-managed-base-environments"><span class="toc-section-number">2.1.1</span> Externally Managed Base
+Environments</a>
+<ul>
+<li><a href="#venv-install" id="toc-venv-install"><span class="toc-section-number">2.1.1.1</span> VENV Install</a></li>
+<li><a href="#pipx-install" id="toc-pipx-install"><span class="toc-section-number">2.1.1.2</span> PIPX Install</a></li>
+<li><a href="#python-altinstall" id="toc-python-altinstall"><span class="toc-section-number">2.1.1.3</span> Python Altinstall</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><a href="#uninstall" id="toc-uninstall"><span class="toc-section-number">3</span> Uninstall</a>
+<ul>
+<li><a href="#linux-1" id="toc-linux-1"><span class="toc-section-number">3.1</span> Linux</a>
+<ul>
+<li><a href="#externally-managed-base-environments-1" id="toc-externally-managed-base-environments-1"><span class="toc-section-number">3.1.1</span> Externally managed base
+environments</a>
+<ul>
+<li><a href="#venvs" id="toc-venvs"><span class="toc-section-number">3.1.1.1</span> VENVs</a></li>
+<li><a href="#pipx" id="toc-pipx"><span class="toc-section-number">3.1.1.2</span> PIPX</a></li>
+<li><a href="#python-altinstall-1" id="toc-python-altinstall-1"><span class="toc-section-number">3.1.1.3</span> Python altinstall</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><a href="#extra-info" id="toc-extra-info"><span class="toc-section-number">4</span> Extra Info</a>
+<ul>
+<li><a href="#history-file" id="toc-history-file"><span class="toc-section-number">4.1</span> History file</a></li>
+<li><a href="#shell-completions" id="toc-shell-completions"><span class="toc-section-number">4.2</span> Shell Completions</a></li>
+<li><a href="#tmux-defaults" id="toc-tmux-defaults"><span class="toc-section-number">4.3</span> TMUX defaults</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 data-number="1" id="prerequisites"><span class="header-section-number">1</span> Prerequisites</h1>
+<p>Download and install the following before running this program.</p>
+<ul>
+<li><a href="https://www.python.org/"><em>Python</em></a>
+<ul>
+<li>This program in written in Python. Therefore, Python is required to
+run the program</li>
+<li>Python is usually already installed on Linux</li>
+</ul></li>
+<li><a href="https://github.com/tmux/tmux/wiki"><em>tmux</em></a>
+<ul>
+<li>Used to split the screen per ssh session</li>
+</ul></li>
+</ul>
+<h1 data-number="2" id="install"><span class="header-section-number">2</span> Install</h1>
+<h2 data-number="2.1" id="linux"><span class="header-section-number">2.1</span> Linux</h2>
+<p>Install the prerequisites using the instructions on the respective
+websites.</p>
+<p>The program is installed using <code>python</code> and the
+<code>pip</code> module. There are no Python dependencies to this
+program. All code utilizes only the Python standard library.</p>
+<p>If you do not wish to install this package to your system, a Python
+zipapp is included (<code>.pyz</code>). If you system has Python
+installed, the Pyzip zipapp can simply be downloaded and ran. It is
+located in the <code>releases</code> folder or on the github releases
+page and is named <code>mssh-menu.pyz</code>.</p>
+<p>Two installation files are included in the <code>releases</code>
+folder or on the github releases page. One is a Python “wheel” file
+(<code>.whl</code>) and the other one is a compressed <code>tar</code>
+file (<code>.tar.gz</code>). Either file can install the program,
+although it is recommended to install the <code>.whl</code>. The
+following are insturctions to install the <code>.whl</code>.</p>
+<p>Open a <code>terminal</code> window.</p>
+<p>Install with the following command:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="op">&lt;</span>mssh-menu-{version}-py3-none-{platform}.whl<span class="op">&gt;</span></span></code></pre></div>
+<p>Python <code>pip</code> installs the program, the <code>man</code>
+page, and shell completions.</p>
+<h3 data-number="2.1.1" id="externally-managed-base-environments"><span class="header-section-number">2.1.1</span> Externally Managed Base
+Environments</h3>
+<p>On newer distributions of Debian, Ubuntu, and more <a href="https://peps.python.org/pep-0668/">PEP 668</a> introduces
+challenges to the user to install Python packages, even if they do not
+modify the system packages.</p>
+<p>If you are on one of these systems (you most likely are), you will
+receive a message like the following:</p>
+<pre><code>error: externally-managed-environment
+
+× This environment is externally managed
+╰─&gt; To install Python packages system-wide, try apt install
+    python3-xyz, where xyz is the package you are trying to
+    install.
+
+    If you wish to install a non-Debian-packaged Python package,
+    create a virtual environment using python3 -m venv path/to/venv.
+    Then use path/to/venv/bin/python and path/to/venv/bin/pip. Make
+    sure you have python3-full installed.
+
+    If you wish to install a non-Debian packaged Python application,
+    it may be easiest to use pipx install xyz, which will manage a
+    virtual environment for you. Make sure you have pipx installed.
+
+    See /usr/share/doc/python3.12/README.venv for more information.
+
+note: If you believe this is a mistake, please contact your Python installation or OS distribution provider. You can override this, at the risk of breaking your Python installation or OS, by passing --break-system-packages.
+hint: See PEP 668 for the detailed specification.</code></pre>
+<p>There are a few ways to work around this. Because there is not a
+<code>.deb</code> or <code>.rpm</code> created for this project you
+cannot install this program using your system package manager. That
+leaves creating a virtual environment, using <code>pipx</code>, or
+installing an <code>altinstall</code> of python.</p>
+<h4 data-number="2.1.1.1" id="venv-install"><span class="header-section-number">2.1.1.1</span> VENV Install</h4>
+<p>A virtual environment can be created for installing this program. The
+downside to this method is the user must activate the virtual
+environment before being able to access the program. Once the virtual
+environment is activated the program and the man page are available to
+the user. However, I notice the shell completions are not automatically
+working as the virtual environment does not set the proper paths for
+shell-completions. More on this later.</p>
+<p>To install using a virtual environment, first install
+<code>python3-venv</code>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install python3-venv</span></code></pre></div>
+<p>Then create the virtual environment like this:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv <span class="va">$HOME</span>/.venv/python3</span></code></pre></div>
+<p>Activate the <code>venv</code>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> <span class="va">$HOME</span>/.venv/python3/bin/activate</span></code></pre></div>
+<p>Then install this program using <code>pip</code>.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="op">&lt;</span>mssh-menu-{version}-py3-none-{platform}.whl<span class="op">&gt;</span></span></code></pre></div>
+<p>In my observations, the <code>venv</code>’s <code>activate</code>
+script does not set the paths needed for shell-completions. You can run
+the following commands at the command line for your respective shell to
+set the correct path and remove any existing completions for this
+program.</p>
+<p><code>bash</code></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">complete</span> <span class="at">-r</span> mssh-menu</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="va">XDG_DATA_DIRS</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$VIRTUAL_ENV</span><span class="st">/share:</span><span class="va">$XDG_DATA_DIRS</span><span class="st">&quot;</span></span></code></pre></div>
+<p><code>zsh</code></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="va">FPATH</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$VIRTUAL_ENV</span><span class="st">/share/zsh/site-functions:</span><span class="va">$FPATH</span><span class="st">&quot;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">compinit</span></span></code></pre></div>
+<p><code>fish</code></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="at">-gx</span> fish_complete_path <span class="va">$VIRTUAL_ENV</span>/share/fish/vendor_completions.d <span class="va">$fish_complete_path</span></span></code></pre></div>
+<p>I will leave it to you to decide if and how to modify the python venv
+activate script to avoid typing these commands every time.</p>
+<h4 data-number="2.1.1.2" id="pipx-install"><span class="header-section-number">2.1.1.2</span> PIPX Install</h4>
+<p>PIPX has the benefit of installing the program into a virtual
+environment without forcing the user to run a command to enter the
+virtual environment. PIPX handles creating the virtual environment for
+the program and running the program in the virtual environment
+transparently. PIPX installs the program and the man pages. The
+shell-completions are copied over, but will not work as the location is
+not on the path. More on this later.</p>
+<p>To install using <code>pipx</code> first install <code>pipx</code> on
+your system with the commands:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install pipx</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pipx</span> ensurepath</span></code></pre></div>
+<p>Then install this package with this command:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pipx</span> install <span class="op">&lt;</span>mssh-menu-{version}-py3-none-{platform}.whl<span class="op">&gt;</span></span></code></pre></div>
+<p>One way to make shell-completions work is to add the pipx path to
+this programs’s share folder and remove any existing completions for
+this program:</p>
+<p><code>bash</code></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">complete</span> <span class="at">-r</span> mssh-menu</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="va">XDG_DATA_DIRS</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$HOME</span><span class="st">/.local/share/pipx/venvs/mssh-menu/share:</span><span class="va">$XDG_DATA_DIRS</span><span class="st">&quot;</span></span></code></pre></div>
+<p><code>zsh</code></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="va">FPATH</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$HOME</span><span class="st">/.local/share/pipx/venvs/mssh-menu/share/zsh/site-functions:</span><span class="va">$FPATH</span><span class="st">&quot;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">compinit</span></span></code></pre></div>
+<p><code>fish</code></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="at">-gx</span> fish_complete_path <span class="va">$HOME</span>/.local/share/pipx/venvs/mssh-menu/share/fish/vendor_completions.d <span class="va">$fish_complete_path</span></span></code></pre></div>
+<p>I will leave it to you to decide if and how to modify your system to
+avoid typing these commands every time.</p>
+<p>Another way to make shell-completions work with pipx is to run the
+<code>mssh-menu --completion &lt;shell&gt;</code> option. For details on
+this method see the section below <a href="#shell-completions">Shell
+Completions</a></p>
+<h4 data-number="2.1.1.3" id="python-altinstall"><span class="header-section-number">2.1.1.3</span> Python Altinstall</h4>
+<p>Python altinstall installs an alternate version of Python on your
+system by compiling the python source and then performing an
+<code>altinstall</code>. Use this method if you want a user version of
+Python on your system that isn’t externally managed by your Linux
+distribution’s package manager, and you don’t care to create a virtual
+environment to run this program. You can use the altinstall of Python
+for anything Python related. The altinstall method will install the
+program, man pages, and shell-completions.</p>
+<p>You should reference <a href="https://docs.python.org/3/using/unix.html#building-python">Building
+Python (Python docs)</a> for instructions.</p>
+<p>Here I will summarize the steps for an example system.</p>
+<p>Install the prerequisites:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install build-essential gdb lcov pkg-config <span class="dt">\</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>      libbz2-dev libffi-dev libgdbm-dev libgdbm-compat-dev liblzma-dev <span class="dt">\</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>      libncurses5-dev libreadline6-dev libsqlite3-dev libssl-dev <span class="dt">\</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>      lzma lzma-dev tk-dev uuid-dev zlib1g-dev</span></code></pre></div>
+<p>Download the Python source from <a href="https://www.python.org/downloads/">Python</a>.</p>
+<p>Extract the archive and cd into the created directory.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xvf</span> Python-MAJOR.MINOR.PATCH.tar.xz</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Python-MAJOR.MINOR.PATCH</span></code></pre></div>
+<p>Then use these steps to build python.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./configure</span> <span class="at">--enable-optimizations</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> test</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> make altinstall</span></code></pre></div>
+<p>You should now have an alternate installation of Python on your
+system.</p>
+<p>Install this package by replacing <code>python3</code> with your
+alternate installation version of Python
+(e.g. <code>python3.13</code>).</p>
+<p>Here is an example how to do that.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3.13</span> <span class="at">-m</span> pip install <span class="at">--upgrade</span> pip</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3.13</span> <span class="at">-m</span> pip install <span class="op">&lt;</span>mssh-menu-{version}-py3-none-{platform}.whl<span class="op">&gt;</span></span></code></pre></div>
+<h1 data-number="3" id="uninstall"><span class="header-section-number">3</span> Uninstall</h1>
+<h2 data-number="3.1" id="linux-1"><span class="header-section-number">3.1</span> Linux</h2>
+<p>Open a <code>terminal</code> window.</p>
+<p>Use python pip to uninstall the program with the following
+command:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip uninstall mssh-menu</span></code></pre></div>
+<h3 data-number="3.1.1" id="externally-managed-base-environments-1"><span class="header-section-number">3.1.1</span> Externally managed base
+environments</h3>
+<p>For externally managed base environments, use one of the
+following.</p>
+<h4 data-number="3.1.1.1" id="venvs"><span class="header-section-number">3.1.1.1</span> VENVs</h4>
+<p>For virtual environments, first activate the virtual environment.</p>
+<p>Then run the command:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> uninstall mssh-menu</span></code></pre></div>
+<h4 data-number="3.1.1.2" id="pipx"><span class="header-section-number">3.1.1.2</span> PIPX</h4>
+<p>For pipx installs, uninstall with:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pipx</span> uninstall mssh-menu</span></code></pre></div>
+<h4 data-number="3.1.1.3" id="python-altinstall-1"><span class="header-section-number">3.1.1.3</span> Python altinstall</h4>
+<p>For python <code>altinstall</code>s, substitute python3 with your
+version of python (e.g. python3.13)</p>
+<p>Here is an example:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3.13</span> <span class="at">-m</span> pip uninstall mssh-menu</span></code></pre></div>
+<h1 data-number="4" id="extra-info"><span class="header-section-number">4</span> Extra Info</h1>
+<h2 data-number="4.1" id="history-file"><span class="header-section-number">4.1</span> History file</h2>
+<p>The selections are saved in a history file. The location of the
+history file is:</p>
+<ul>
+<li><code>$HOME/.local/share/mssh-menu/mssh-menu.json</code></li>
+</ul>
+<p>You can delete this file to clear your history.</p>
+<p>This folder is not automatically removed on program uninstallation.
+You can manually delete it without issues.</p>
+<h2 data-number="4.2" id="shell-completions"><span class="header-section-number">4.2</span> Shell Completions</h2>
+<p>This program includes shell completions which should be installed by
+default to your local user’s share directory
+(e.g. <code>$HOME/.local/share</code>).</p>
+<ul>
+<li><code>bash</code>
+<ul>
+<li><code>$HOME/.local/share/bash-completion/completions/mssh-menu</code></li>
+</ul></li>
+<li><code>zsh</code>
+<ul>
+<li><code>$HOME/.local/share/zsh/site-functions/_mssh-menu</code></li>
+</ul></li>
+<li><code>fish</code>
+<ul>
+<li><code>$HOME/.local/share/fish/vendor_completions.d/mssh-menu.fish</code></li>
+</ul></li>
+</ul>
+<p>If shell completions are not working, this program includes an option
+to provide the shell completion to stdout.</p>
+<p>Run the command:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mssh-menu</span> <span class="at">--completion</span> <span class="op">&lt;</span>shell<span class="op">&gt;</span></span></code></pre></div>
+<p>Where <code>&lt;shell&gt;</code> is the name of your shell.</p>
+<p>Using shell redirection you can place these commands in a file where
+your shell looks for shell completions. This part you will have to
+research for your shell.</p>
+<h2 data-number="4.3" id="tmux-defaults"><span class="header-section-number">4.3</span> TMUX defaults</h2>
+<p>Here is my default <code>.tmux.conf</code> file for reference.</p>
+<p><code>mssh-menu</code> will automatically take care of setting the
+<code>base-index</code> and <code>pane-base-index</code> to 1.</p>
+<p><code>mssh-menu</code> will not configure the
+<code>default-terminal</code>, <code>history-limit</code>, or
+<code>mouse</code> options. If you want those options, create a
+<code>.tmux.conf</code> file in your user’s home directory, and add the
+contents below to that file.</p>
+<pre><code># Improve colors
+set -g default-terminal screen-256color
+
+# Set scrollback buffer to 10000
+set -g history-limit 10000
+
+# Enable mouse mode (tmux 2.1 and above)
+set -g mouse on
+
+# Set first windows and pane to index of 1 (instead of zero)
+set -g base-index 1
+set -g pane-base-index 1</code></pre>
+</body>
+</html>

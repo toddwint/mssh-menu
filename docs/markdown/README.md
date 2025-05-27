@@ -1,91 +1,77 @@
 ---
 title: README
-date: 2023-08-29
+author: Todd Wintermute
+date: 2025-05-23
 ---
 
-# `mssh-menu`
+
+# _Multi-SSH Menu_ (`mssh-menu`)
 
 
-## Info
+## Description
 
-SSH into multiple devices from a single command, splitting the screen, and synchronize the keyboard input.
+SSH to multiple devices, splitting the screen per session, and send what is typed on the keyboard to all sessions. Instead of typing out the names of each device, select the devices via a menu which is based on information from a user created CSV file. A CSV file is required before using the program, but it is easy and straightforward to create one.
 
-The devices are selected from a menu. This menu is generated from a CSV file the user creates.
+To create the CSV file, create a new file in a spreadsheet program. The first column is the list of IP addresses or hostnames. The second, third, etc. columns will be the "tags" to identify each device. A header is expected. "Host" and "Tags" will be fine for a header. Save this file with the ".csv" extension. Here is an example:
 
+| host    | tags   |           |     |
+|---------|--------|-----------|-----|
+| server1 | Site 1 | Primary   | All |
+| server2 | Site 1 | Redundant | All |
+| server3 | Site 2 | Primary   | All |
+| server4 | Site 2 | Redundant | All |
 
-## Overview
+The menu is generated from the tags. The unique tags are grouped together.
 
-First, create a CSV file with the first column being the IP address or hostname of the device. Then create additional columns containing the tags which will end up being the groups.
-
-Run `mssh-menu.py` by supplying the command and the name of the CSV file as the argument. 
-
-For example, to run `mssh-menu.py` with the file `servers.csv` and both files are in the current directly, enter the following:
+Run `mssh-menu` and supply the name of the CSV file as the argument.  For example, to run `mssh-menu` with the file `examples/servers.csv`, enter the following:
 
 ```bash
-./mssh-menu.py servers.csv
+mssh-menu examples/servers.csv
 ```
 
-By default, if no file is supplied, the script will look for a file named `servers.csv` in the user's home directory.
+The list of tags appears on the screen. Select the tag group(s) and provide a username. An SSH session to all selected devices is created within a split screen via tmux. They keyboard input is synchronized so any commands you type go to all sessions.
 
-For a list of commands run `mssh-menu.py` with the `-h` or `--help` options.
+_Multi-SSH Menu_ (`mssh-menu`) is written in _Python_.
+
+
+## Features
+
+- SSH to multiple devices simultaneously.
+- Synchronize the keystrokes sent to all sessions.
+- Create groups of devices by adding the devices and tags in a CSV file.
 
 
 ## Screenshots
 
-![Running the script and using the menu](https://raw.githubusercontent.com/toddwint/mssh-menu/main/docs/figures/mssh-menu.py.1.png)
+![Running the script and using the menu](./figures/mssh-menu.1.png)
 
-![Logged into multiple devices and typing the same commands once](https://raw.githubusercontent.com/toddwint/mssh-menu/main/docs/figures/mssh-menu.py.2.png)
-
-
-## Requirements
-
-The following are requirements to run this script:
-
-- python3
-- ssh
-- tmux
+![Logged into multiple devices and typing the same commands once](./figures/mssh-menu.2.png)
 
 
-## Sample `servers.csv` file
+## Installing
 
-```
-host,tags,,,,
-server1,Site 1 servers,,Odd numbered servers,,All servers
-server2,Site 1 servers,,,Even numbered servers,All servers
-server3,,Site 2 servers,Odd numbered servers,,All servers
-server4,,Site 2 servers,,Even numbered servers,All servers
-```
-
-Or in human readable form:
+See the **`INSTALL`** document for instructions on how to install this program.
 
 
-| host    | tags           |                |                      |                       |             |
-|---------|----------------|----------------|----------------------|-----------------------|-------------|
-| server1 | Site 1 servers |                | Odd numbered servers |                       | All servers |
-| server2 | Site 1 servers |                |                      | Even numbered servers | All servers |
-| server3 |                | Site 2 servers | Odd numbered servers |                       | All servers |
-| server4 |                | Site 2 servers |                      | Even numbered servers | All servers |
+## Usage
+
+Use one of the following options to learn how to use this program.
 
 
-## TMUX defaults
+### Manual
 
-Here is my default `.tmux.conf` file for reference.
+The program's command usage and also examples are included in a document named **`MANUAL`** in various formats including pdf, markdown, and html. 
 
-This script will automatically take care of setting the `base-index` and `pane-base-index` to 1.
+On certain platforms, usage and examples can also be found in the program's **`man`** page. On systems which utilize **`man`** pages, you can view the manual with the command **`man mssh-menu`**. 
 
-It will not configure the `default-terminal`, `history-limit`, or `mouse` options.
 
-```
-# Improve colors
-set -g default-terminal screen-256color
+### Help Option
 
-# Set scrollback buffer to 10000
-set -g history-limit 10000
+You can type either **`mssh-menu -h`** or **`mssh-menu --help`** at the command line interface to see the program's options and usage.
 
-# Enable mouse mode (tmux 2.1 and above)
-set -g mouse on
 
-# Set first windows and pane to index of 1 (instead of zero)
-set -g base-index 1
-set -g pane-base-index 1
-```
+## Examples
+
+For examples see the **`Examples`** section in the **`MANUAL`** document. You can also see examples if you view the **`man`** page for this program.
+
+
