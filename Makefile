@@ -97,7 +97,7 @@ pipx_install:
 .PHONY: git-release-push
 git-release-push: $(release_files)
 	gh release create \
-		"${script} ${version}" \
+		"${script}/${version}" \
 		--latest \
 		--notes-file releases/release_notes.txt \
 		--generate-notes \

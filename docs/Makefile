@@ -173,6 +173,7 @@ $(typ_files) : ${output_dir}/%.typ : ${md_dir}/%.md
 .PHONY: clean
 clean:
 	-@rm --verbose "${output_dir}/"*
+	-@rm --verbose ${man_files}
 
 .PHONY: copy
 copy:
